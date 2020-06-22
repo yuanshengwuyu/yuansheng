@@ -6,7 +6,7 @@ import com.yswuyu.backend.model.business.vo.AddressExcelEntity;
 import com.yswuyu.backend.model.business.vo.MchAddressResVO;
 import com.yswuyu.backend.service.AddressService;
 import com.yswuyu.backend.util.CodeGen;
-import com.yswuyu.backend.util.ToolBestPoiUtil;
+import com.yswuyu.backend.util.EasyPoiUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -54,7 +54,7 @@ public class AddressController {
             //批次号
             String batchCode = codeGen.genCode(userId);
 
-            List<AddressExcelEntity> resultList = ToolBestPoiUtil.getImportContent(file, AddressExcelEntity.class, 1, 0);
+            List<AddressExcelEntity> resultList = EasyPoiUtil.getImportContent(file, AddressExcelEntity.class, 1, 0);
             if (CollectionUtils.isEmpty(resultList)){
                 return ResResult.fail();
             }

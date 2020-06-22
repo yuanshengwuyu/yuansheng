@@ -14,13 +14,13 @@ base:
   isroot_dir: static/images_upload/
   #邮件功能
   #邮箱发送smtp
-  email_smtp: smtp.sina.com
+  email_smtp: smtp.exmail.qq.com
   #邮箱发送端口
   email_port: 465
   #发送邮箱登录账号
-  email_account: 1@sina.com
+  email_account: hejing@yswuyu.com
   #发送邮箱登录密码
-  email_password: 1
+  email_password: w2Fipbn2Lo4k6iJr
   #实例演示开关 启动该模式删除增加修改会弹出演示模式提示框
   demoEnabled: false
   #漂亮得拖动验证码 默认false普通验证码、true滚动验证码

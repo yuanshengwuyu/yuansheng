@@ -18,7 +18,7 @@ import java.util.List;
  * @Description:
  */
 @Slf4j
-public class ToolBestPoiUtil {
+public class EasyPoiUtil {
 
     public static boolean isExcel2003(String filePath) {
         return filePath.matches("^.+\\.(?i)(xls)$");

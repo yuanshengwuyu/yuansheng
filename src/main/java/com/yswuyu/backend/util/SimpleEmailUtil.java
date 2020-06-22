@@ -237,31 +237,31 @@ public class SimpleEmailUtil {
 	public static void main(String[] args) throws Exception {
 		// 这个类主要是设置邮件
 		MailSenderInfo mailInfo = new MailSenderInfo();
-		mailInfo.setMailServerHost("smtp.sina.com");
+		mailInfo.setMailServerHost("smtp.exmail.qq.com");
 		mailInfo.setMailServerPort("465");
 		mailInfo.setValidate(true);
 		mailInfo.setSsl(true);
-		mailInfo.setUserName("tttt@sina.com");
-		mailInfo.setPassword("ttttttt");// 您的邮箱密码
-		mailInfo.setFromAddress("aaaaa@sina.com");//发件人地址
-		mailInfo.setToAddress("bbbbb@qq.com");//收件人地址
-		mailInfo.setSubject("设置邮箱标题wwwwww");
+		mailInfo.setUserName("hejing@yswuyu.com");
+		mailInfo.setPassword("w2Fipbn2Lo4k6iJr");// 您的邮箱密码
+		mailInfo.setFromAddress("hejing@yswuyu.com");//发件人地址
+		mailInfo.setToAddress("sconnies@sina.com");//收件人地址
+		mailInfo.setSubject("测试邮件");
 		mailInfo.setContent("<div class=\"content\" style=\"\" id=\"faqDetail\">\r\n"
 				+ "  <div class=\"return\" style=\"display:none;\"><a href=\"/cgi-bin/help\">首页</a> » <a href=\"/cgi-bin/help?id=28\">客户端设置</a></div>\r\n"
-				+ "  <h2>如何设置IMAP、POP3/SMTP及其SSL加密方式？ </h2>\r\n" + "  <div class=\"answer\">\r\n"
-				+ "  <div><font color=\"#555555\">&nbsp;</font> \r\n" + "<div>如果您的电子邮件客户端支持SSL，可以在设置中选择使用SSL。</div>\r\n"
+				+ "  <h2>欢迎使用缘笙物语小程序</h2>\r\n" + "  <div class=\"answer\">\r\n"
+				+ "  <div><font color=\"#555555\">&nbsp;</font> \r\n" + "<div>梦想风帆，拔锚起航。缘自我心，笙生不息。</div>\r\n"
 				+ "<div>&nbsp;</div>\r\n" + "</div>");
 		// 这个类主要来发送邮件
 		SimpleEmailUtil sms = new SimpleEmailUtil();
 		// sms.sendTextMail(mailInfo);//发送文体格式
-		 // 附件
-        String fileName1 = "C:\\Users\\Administrator\\Desktop\\周报.txt";
-        File file1 = new File(fileName1);
-        String fileName2 = "C:\\Users\\Administrator\\Desktop\\111.rp";
-        File file2 = new File(fileName2);
-        List<File> fileList = new ArrayList<File>();
+		// 附件
+		String fileName1 = "/Volumes/Freestyle/视频图片剪辑/01.jpg";
+		File file1 = new File(fileName1);
+//		String fileName2 = "C:\\Users\\Administrator\\Desktop\\111.rp";
+//		File file2 = new File(fileName2);
+		List<File> fileList = new ArrayList<File>();
         fileList.add(file1);
-        fileList.add(file2);
+//        fileList.add(file2);
 		sms.sendHtmlMail(mailInfo,fileList);// 发送html格式
 	}
 
