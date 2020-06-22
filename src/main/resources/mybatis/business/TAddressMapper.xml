@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yswuyu.backend.mapper.business.TAddressMapper">
+
+    <resultMap id="addressResultMap" type="com.yswuyu.backend.model.business.TAddress" autoMapping="true">
+        <result column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="receiver_name" property="receiverName"/>
+        <result column="phone" property="phone"/>
+        <result column="province" property="province"/>
+        <result column="province_id" property="provinceId"/>
+        <result column="city" property="city"/>
+        <result column="city_id" property="cityId"/>
+        <result column="county" property="county"/>
+        <result column="county_id" property="countyId"/>
+        <result column="detail_address" property="detailAddress"/>
+        <result column="postal_code" property="postalCode"/>
+        <result column="default_address" property="defaultAddress"/>
+        <result column="batch_num" property="batchNum" jdbcType="VARCHAR"/>
+        <result column="is_completed" property="isCompleted" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yswuyu.backend.model.business.TAddress">
+        insert into t_address
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="userId != null" >
+                user_id,
+            </if>
+            <if test="receiverName != null" >
+                receiver_name,
+            </if>
+            <if test="phone != null" >
+                phone,
+            </if>
+            <if test="province != null" >
+                province,
+            </if>
+            <if test="provinceId != null" >
+                province_id,
+            </if>
+            <if test="city != null" >
+                city,
+            </if>
+            <if test="cityId != null" >
+                city_id,
+            </if>
+            <if test="county != null" >
+                county,
+            </if>
+            <if test="countyId != null" >
+                county_id,
+            </if>
+            <if test="detailAddress != null" >
+                detail_address,
+            </if>
+            <if test="postalCode != null" >
+                postal_code,
+            </if>
+            <if test="defaultAddress != null" >
+                default_address,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="batchNum != null" >
+                batch_num,
+            </if>
+            <if test="isCompleted != null" >
+                is_completed,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="userId != null" >
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="receiverName != null" >
+                #{receiverName,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null" >
+                #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceId != null" >
+                #{provinceId,jdbcType=INTEGER},
+            </if>
+            <if test="city != null" >
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="cityId != null" >
+                #{cityId,jdbcType=INTEGER},
+            </if>
+            <if test="county != null" >
+                #{county,jdbcType=VARCHAR},
+            </if>
+            <if test="countyId != null" >
+                #{countyId,jdbcType=INTEGER},
+            </if>
+            <if test="detailAddress != null" >
+                #{detailAddress},
+            </if>
+            <if test="postalCode != null" >
+                #{postalCode,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultAddress != null" >
+                #{defaultAddress},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="batchNum != null" >
+                #{batchNum,jdbcType=VARCHAR},
+            </if>
+            <if test="isCompleted != null" >
+                #{isCompleted,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+
+    <insert id="insertWithoutDuplicate" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yswuyu.backend.model.business.TAddress">
+        insert into t_address
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="userId != null" >
+                user_id,
+            </if>
+            <if test="receiverName != null" >
+                receiver_name,
+            </if>
+            <if test="phone != null" >
+                phone,
+            </if>
+            <if test="province != null" >
+                province,
+            </if>
+            <if test="provinceId != null" >
+                province_id,
+            </if>
+            <if test="city != null" >
+                city,
+            </if>
+            <if test="cityId != null" >
+                city_id,
+            </if>
+            <if test="county != null" >
+                county,
+            </if>
+            <if test="countyId != null" >
+                county_id,
+            </if>
+            <if test="detailAddress != null" >
+                detail_address,
+            </if>
+            <if test="postalCode != null" >
+                postal_code,
+            </if>
+            <if test="defaultAddress != null" >
+                default_address,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="batchNum != null" >
+                batch_num,
+            </if>
+            <if test="isCompleted != null" >
+                is_completed,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="userId != null" >
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="receiverName != null" >
+                #{receiverName,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null" >
+                #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceId != null" >
+                #{provinceId,jdbcType=INTEGER},
+            </if>
+            <if test="city != null" >
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="cityId != null" >
+                #{cityId,jdbcType=INTEGER},
+            </if>
+            <if test="county != null" >
+                #{county,jdbcType=VARCHAR},
+            </if>
+            <if test="countyId != null" >
+                #{countyId,jdbcType=INTEGER},
+            </if>
+            <if test="detailAddress != null" >
+                #{detailAddress},
+            </if>
+            <if test="postalCode != null" >
+                #{postalCode,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultAddress != null" >
+                #{defaultAddress},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="batchNum != null" >
+                #{batchNum,jdbcType=VARCHAR},
+            </if>
+            <if test="isCompleted != null" >
+                #{isCompleted,jdbcType=INTEGER},
+            </if>
+        </trim>
+        on duplicate key update id = #{id,jdbcType=INTEGER}
+    </insert>
+
+    <insert id="batchInsertSelective" parameterType="com.yswuyu.backend.model.business.TAddress">
+        insert into t_address (id, user_id, receiver_name,
+        phone, province, province_id,
+        city, city_id, county,
+        county_id, detail_address, postal_code,
+        default_address, update_time, create_time,
+        batch_num, is_completed)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{id,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, #{receiverName,jdbcType=VARCHAR},
+            #{phone,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{provinceId,jdbcType=INTEGER},
+            #{city,jdbcType=VARCHAR}, #{cityId,jdbcType=INTEGER}, #{county,jdbcType=VARCHAR},
+            #{countyId,jdbcType=INTEGER}, #{detailAddress,jdbcType=VARCHAR}, #{postalCode,jdbcType=VARCHAR},
+            #{defaultAddress,jdbcType=BIT}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP},
+            #{batchNum,jdbcType=VARCHAR}, #{isCompleted,jdbcType=INTEGER})
+        </foreach>
+    </insert>
+
+    <insert id="batchInsertWithoutDuplicate" parameterType="com.yswuyu.backend.model.business.TAddress">
+        insert into t_address (id, user_id, receiver_name,
+        phone, province, province_id,
+        city, city_id, county,
+        county_id, detail_address, postal_code,
+        default_address, update_time, create_time,
+        batch_num, is_completed)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{id,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, #{receiverName,jdbcType=VARCHAR},
+            #{phone,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{provinceId,jdbcType=INTEGER},
+            #{city,jdbcType=VARCHAR}, #{cityId,jdbcType=INTEGER}, #{county,jdbcType=VARCHAR},
+            #{countyId,jdbcType=INTEGER}, #{detailAddress,jdbcType=VARCHAR}, #{postalCode,jdbcType=VARCHAR},
+            #{defaultAddress,jdbcType=BIT}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP},
+            #{batchNum,jdbcType=VARCHAR}, #{isCompleted,jdbcType=INTEGER})
+        </foreach>
+        ON DUPLICATE KEY UPDATE id = values(id)
+    </insert>
+</mapper>
