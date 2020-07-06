@@ -787,32 +787,53 @@ CREATE TABLE `t_sys_street` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for t_sys_user
+-- 用户信息主表
 -- ----------------------------
 DROP TABLE IF EXISTS `t_sys_user`;
 CREATE TABLE `t_sys_user` (
-  `id` varchar(255) COLLATE utf8_bin NOT NULL COMMENT '主键',
-  `username` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '用户账号',
-  `password` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '用户密码',
-  `nickname` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '昵称',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='用户表';
+	`id` VARCHAR ( 50 ) NOT NULL COMMENT '主键',
+	`username` VARCHAR ( 50 ) NOT NULL DEFAULT '' COMMENT '用户账号',
+	`password` VARCHAR ( 50 ) NOT NULL DEFAULT '' COMMENT '用户密码',
+	`nickname` VARCHAR ( 50 ) NOT NULL DEFAULT '' COMMENT '昵称',
+	`bind_phone` VARCHAR ( 20 ) NOT NULL DEFAULT '' COMMENT '绑定的手机号',
+	`token` VARCHAR ( 500 ) DEFAULT NULL COMMENT '用户token',
+	`token_exp` BIGINT ( 20 ) DEFAULT NULL COMMENT 'token时效',
+	`token_crt_tm` TIMESTAMP NULL DEFAULT NULL COMMENT 'token生效日期',
+	`union_id` VARCHAR ( 50 ) NOT NULL DEFAULT '' COMMENT '微信unionId',
+	`open_id` VARCHAR ( 50 ) NOT NULL DEFAULT '' COMMENT '微信openId',
+	`mini_open_id` VARCHAR ( 50 ) DEFAULT NULL COMMENT '小程序openId',
+	`sex` TINYINT ( 4 ) UNSIGNED DEFAULT NULL COMMENT '性别(0-男，1-女)',
+	`wx_name` VARCHAR ( 100 ) DEFAULT NULL COMMENT '微信名字',
+	`wx_ico_url` VARCHAR ( 200 ) DEFAULT NULL COMMENT '微信头像',
+	`email` VARCHAR ( 100 ) DEFAULT NULL COMMENT '邮箱',
+	`qq_num` VARCHAR ( 20 ) DEFAULT NULL COMMENT 'QQ号',
+	`person_sign` VARCHAR ( 200 ) DEFAULT NULL COMMENT '个人签名',
+	`user_type` TINYINT ( 4 ) NOT NULL DEFAULT '0' COMMENT '用户类型：0-默认普通用户，1-运营后台',
+	`enabled` TINYINT ( 4 ) DEFAULT '0' COMMENT '是否禁用(0-启用,1-禁用)',
+	`last_login_tm` datetime DEFAULT NULL COMMENT '最后登录时间',
+	`last_login_ip` VARCHAR ( 50 ) NOT NULL DEFAULT '' COMMENT '最后登录IP',
+	`create_date` datetime NULL DEFAULT NULL COMMENT '创建时间',
+	`update_date` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+	PRIMARY KEY ( `id` ),
+	KEY `idx_union_id` ( `union_id` ),
+	KEY `idx_bind_phone` ( `bind_phone` )
+) ENGINE = INNODB COMMENT = '用户信息表';
 
 -- ----------------------------
--- Records of t_sys_user
+-- 添加用户数据
 -- ----------------------------
-INSERT INTO `t_sys_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '管理员');
-INSERT INTO `t_sys_user` VALUES ('368026921239449600', 'admin1', 'e00cf25ad42683b3df678c61f42c6bda', '');
-INSERT INTO `t_sys_user` VALUES ('368026937181999104', 'admin2', 'c84258e9c39059a89ab77d846ddab909', '');
-INSERT INTO `t_sys_user` VALUES ('368027013392502784', '44', '73882ab1fa529d7273da0db6b49cc4f3', '444');
-INSERT INTO `t_sys_user` VALUES ('368027030899527680', '5555555', '7a48932b26f04fccb55f0409ba3451fc', '5555555555555');
-INSERT INTO `t_sys_user` VALUES ('368027048402358272', '66', '9f0863dd5f0256b0f586a7b523f8cfe8', '6666666666');
-INSERT INTO `t_sys_user` VALUES ('368027066563694592', '2222', '0d777e9e30b918e9034ab610712c90cf', '2222222222222222');
-INSERT INTO `t_sys_user` VALUES ('368027087866564608', '4444', '9a741f0ad60975ae15d3d83a769442a1', '44444444444');
-INSERT INTO `t_sys_user` VALUES ('368027104895438848', '5555', '90a3e7de4de4a1f8bbe3c092858ed812', '555555555555');
-INSERT INTO `t_sys_user` VALUES ('368027130728157184', '666', '68bac75ed032e0a86bc3eae1b5c996cf', '666666666');
-INSERT INTO `t_sys_user` VALUES ('368027151624179712', '33333333333333', '7b9e4ac60eb7c66e06592cee6dbd0c57', '33333333333333');
-INSERT INTO `t_sys_user` VALUES ('368382463233363968', 'adminpppoooo', '8769c8e5c430f5a461e10680357bef09', 'pppppppppp');
+INSERT INTO `t_sys_user` (`id`, `username`, `password`, `nickname`) VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '管理员');
+INSERT INTO `t_sys_user` (`id`, `username`, `password`, `nickname`) VALUES ('368026921239449600', 'admin1', 'e00cf25ad42683b3df678c61f42c6bda', '');
+INSERT INTO `t_sys_user` (`id`, `username`, `password`, `nickname`) VALUES ('368026937181999104', 'admin2', 'c84258e9c39059a89ab77d846ddab909', '');
+INSERT INTO `t_sys_user` (`id`, `username`, `password`, `nickname`) VALUES ('368027013392502784', '44', '73882ab1fa529d7273da0db6b49cc4f3', '444');
+INSERT INTO `t_sys_user` (`id`, `username`, `password`, `nickname`) VALUES ('368027030899527680', '5555555', '7a48932b26f04fccb55f0409ba3451fc', '5555555555555');
+INSERT INTO `t_sys_user` (`id`, `username`, `password`, `nickname`) VALUES ('368027048402358272', '66', '9f0863dd5f0256b0f586a7b523f8cfe8', '6666666666');
+INSERT INTO `t_sys_user` (`id`, `username`, `password`, `nickname`) VALUES ('368027066563694592', '2222', '0d777e9e30b918e9034ab610712c90cf', '2222222222222222');
+INSERT INTO `t_sys_user` (`id`, `username`, `password`, `nickname`) VALUES ('368027087866564608', '4444', '9a741f0ad60975ae15d3d83a769442a1', '44444444444');
+INSERT INTO `t_sys_user` (`id`, `username`, `password`, `nickname`) VALUES ('368027104895438848', '5555', '90a3e7de4de4a1f8bbe3c092858ed812', '555555555555');
+INSERT INTO `t_sys_user` (`id`, `username`, `password`, `nickname`) VALUES ('368027130728157184', '666', '68bac75ed032e0a86bc3eae1b5c996cf', '666666666');
+INSERT INTO `t_sys_user` (`id`, `username`, `password`, `nickname`) VALUES ('368027151624179712', '33333333333333', '7b9e4ac60eb7c66e06592cee6dbd0c57', '33333333333333');
+INSERT INTO `t_sys_user` (`id`, `username`, `password`, `nickname`) VALUES ('368382463233363968', 'adminpppoooo', '8769c8e5c430f5a461e10680357bef09', 'pppppppppp');
 
 -- ----------------------------
 -- Table structure for t_test

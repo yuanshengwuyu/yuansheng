@@ -59,13 +59,13 @@ spring:
     druid:
      # 主库数据源
      master:
-        url: jdbc:mysql://localhost:3306/Test?useSSL=false&serverTimezone=UTC
+        url: jdbc:mysql://localhost:3306/yuansheng?useSSL=false&serverTimezone=UTC
         username: root
         password: root
         #树熊数据源
      slave:
         enabled : false
-        url: jdbc:mysql://localhost:3306/Test?useSSL=false&serverTimezone=UTC
+        url: jdbc:mysql://localhost:3306/yuansheng?useSSL=false&serverTimezone=UTC
         username: root
         password: root
         #配置初始化连接数大小
