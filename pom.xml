@@ -21,7 +21,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <commons.fileupload.version>1.3.3</commons.fileupload.version>
-        <commons.io.version>2.5</commons.io.version>
+        <commons.io.version>2.7</commons.io.version>
         <swagger.version>2.9.2</swagger.version>
         <easypoi.version>4.1.3</easypoi.version>
         <org.mapstruct.version>1.3.0.Final</org.mapstruct.version>
